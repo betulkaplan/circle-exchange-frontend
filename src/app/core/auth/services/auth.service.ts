@@ -36,6 +36,23 @@ export class AuthService {
         })
       );
   }
+  register(email: string, password: string): Observable<any> {
+    return this.http
+      .post<any>('http://localhost:8080/api/v1/auth/register', {
+        email,
+        password,
+      })
+      .pipe(
+        tap((response: any) => {
+          this.authStorage.setToken(response.token);
+          this.loggedInUserSubject.next(response.user); // Update loggedInUser with the API response
+          this.router.navigate(['/']);
+        }),
+        catchError((error: any) => {
+          return of(error);
+        })
+      );
+  }
 
   logout() {
     this.authStorage.removeToken();

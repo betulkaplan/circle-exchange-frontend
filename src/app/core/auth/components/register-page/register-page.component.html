@@ -1,6 +1,6 @@
 <div class="max-w-md mx-auto">
-  <h2 class="text-2xl font-bold mb-4">Login</h2>
-  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="space-y-4">
+  <h2 class="text-2xl font-bold mb-4">Register</h2>
+  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="space-y-4">
     <div>
       <label for="email" class="block mb-1">Email</label>
       <input
@@ -11,8 +11,8 @@
       />
       <div
         *ngIf="
-          loginForm.controls['email'].invalid &&
-          loginForm.controls['email'].touched
+          registerForm.controls['email'].invalid &&
+          registerForm.controls['email'].touched
         "
         class="text-red-500 text-sm"
       >
@@ -29,8 +29,8 @@
       />
       <div
         *ngIf="
-          loginForm.controls['password'].invalid &&
-          loginForm.controls['password'].touched
+          registerForm.controls['password'].invalid &&
+          registerForm.controls['password'].touched
         "
         class="text-red-500 text-sm"
       >
@@ -40,19 +40,19 @@
     <div>
       <button
         type="submit"
-        [disabled]="loginForm.invalid"
+        [disabled]="registerForm.invalid"
         class="w-full bg-blue-500 text-white font-bold py-2 px-4 rounded focus:outline-none focus:bg-blue-700 disabled:bg-blue-200"
       >
-        Login
+        Register
       </button>
     </div>
     <div>
-      <p>Don't you have any account yet?</p>
+      <p>Go to Login Page</p>
       <button
-        (click)="directToRegister()"
+        (click)="directToLogin()"
         class="w-full bg-green-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:bg-green-700"
       >
-        Register
+        Login
       </button>
     </div>
   </form>
