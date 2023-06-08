@@ -49,6 +49,11 @@ export class AuthService {
       );
   }
 
+  logout() {
+    this.authStorage.removeToken();
+    this.loggedInUserSubject.next(null);
+  }
+
   getoggedInUser(): any {
     return this.loggedInUserSubject.value;
   }
