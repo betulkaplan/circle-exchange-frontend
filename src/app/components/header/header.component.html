@@ -3,7 +3,10 @@
   class="flex items-center justify-between p-4"
 >
   <!-- Header content -->
-  <h1 class="text-3xl font-bold">Circle Exchange</h1>
+  <div class="flex items-center">
+    <img src="assets/icons/disk.png" alt="Icon" class="w-8 h-8 mr-2" />
+    <h1 class="text-3xl font-bold">Circle Exchange</h1>
+  </div>
   <div class="flex items-center">
     <h2 class="mr-4">
       {{ isUserLoggedIn ? isUserLoggedIn.email : "You are not logged In..." }}
