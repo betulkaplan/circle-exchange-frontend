@@ -1,4 +1,11 @@
-<header class="bg-gray-800 text-white p-4">
+<header
+  [class]="
+    isUserLoggedIn
+      ? 'bg-green-500 text-white p-4'
+      : 'bg-gray-800 text-white p-4'
+  "
+>
   <!-- Header content -->
   <h1>Circle Exchange</h1>
+  <h2>User is {{ isUserLoggedIn ? "Logged In" : "not Logged In" }}</h2>
 </header>
