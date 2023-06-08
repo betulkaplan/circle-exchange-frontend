@@ -13,9 +13,8 @@ export class AuthInitializerService {
     return this.http
       .get('http://localhost:8080/api/user/getAuthenticatedUser', {})
       .toPromise()
-      .then((response: any) => {
-        console.log('response in app initialization', response);
-        // Set loggedInUser in authService here
+      .then((user: any) => {
+        this.authService.setLoggedInUser(user);
       })
       .catch((error: any) => {
         console.error('Error fetching authenticated user:', error);
