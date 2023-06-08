@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { AuthService } from 'src/app/core/auth/services/auth.service';
 
@@ -10,15 +11,17 @@ import { AuthService } from 'src/app/core/auth/services/auth.service';
 export class HeaderComponent {
   isUserLoggedIn: any;
   private subscription: Subscription;
-  constructor(private authService: AuthService) {
+  constructor(private authService: AuthService, private router: Router) {
     this.subscription = this.authService.loggedInUser$.subscribe(
       (isLoggedIn) => (this.isUserLoggedIn = isLoggedIn)
     );
   }
 
   onLogout(): void {
-    console.log('logout on this');
     this.authService.logout();
+  }
+  toLogin(): void {
+    this.router.navigate(['login']);
   }
 
   ngOnDestroy(): void {

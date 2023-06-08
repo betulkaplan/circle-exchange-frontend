@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, catchError, of, tap } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { AuthStorageService } from './auth-storage.service';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
@@ -14,21 +15,9 @@ export class AuthService {
 
   constructor(
     private http: HttpClient,
-    private authStorage: AuthStorageService
-  ) {
-    console.log('Guess this runs in every render');
-    http.get<any>('http://localhost:8080/api/user/getAuthenticatedUser').pipe(
-      tap((response: any) => {
-        console.log('RESPONSE HERE', response);
-        // this.authStorage.setToken(response.token);
-        // this.loggedInUserSubject.next(response.user); // Update loggedInUser with the API response
-      }),
-      catchError((error: any) => {
-        console.log('Error in service', error);
-        return of(error);
-      })
-    );
-  }
+    private authStorage: AuthStorageService,
+    private router: Router
+  ) {}
 
   login(email: string, password: string): Observable<any> {
     return this.http
@@ -38,12 +27,11 @@ export class AuthService {
       })
       .pipe(
         tap((response: any) => {
-          console.log('RESPONSE HERE', response);
           this.authStorage.setToken(response.token);
           this.loggedInUserSubject.next(response.user); // Update loggedInUser with the API response
+          this.router.navigate(['/']);
         }),
         catchError((error: any) => {
-          console.log('Error in service', error);
           return of(error);
         })
       );
