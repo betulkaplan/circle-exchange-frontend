@@ -1,4 +1,21 @@
-<ul>
-  <li (click)="navigateToPage('/')">Home</li>
-  <li *ngIf="authenticated" (click)="navigateToPage('property')">Property</li>
+<ul class="flex flex-col justify-start items-start text-gray-800 p-5">
+  <li
+    class="cursor-pointer py-4 px-6 hover:bg-gray-600 w-full"
+    (click)="navigateToPage('/')"
+  >
+    Home
+  </li>
+  <li
+    *ngIf="authenticated"
+    class="cursor-pointer py-4 px-6 hover:bg-gray-600 w-full"
+    (click)="navigateToPage('property')"
+  >
+    Property
+  </li>
+  <li
+    class="cursor-pointer py-4 px-6 hover:bg-gray-600 w-full"
+    (click)="navigateToPage('about')"
+  >
+    About
+  </li>
 </ul>

@@ -14,6 +14,7 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AuthInterceptor } from './core/auth/interceptor/auth.interceptor';
 import { AuthInitializerService } from './core/auth/services/auth-initializer.service';
 import { PropertyPageComponent } from './features/components/property-page/property-page.component';
+import { AboutPageComponent } from './features/components/about-page/about-page.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { PropertyPageComponent } from './features/components/property-page/prope
     MenuComponent,
     DashboardComponent,
     PropertyPageComponent,
+    AboutPageComponent,
   ],
   imports: [
     BrowserModule,
