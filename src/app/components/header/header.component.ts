@@ -11,7 +11,7 @@ export class HeaderComponent {
   isUserLoggedIn: any;
   private subscription: Subscription;
   constructor(private authService: AuthService) {
-    this.subscription = this.authService.isLoggedIn$.subscribe(
+    this.subscription = this.authService.loggedInUser$.subscribe(
       (isLoggedIn) => (this.isUserLoggedIn = isLoggedIn)
     );
   }
