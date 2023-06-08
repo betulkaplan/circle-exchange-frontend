@@ -13,6 +13,7 @@ import { AuthModule } from './core/auth/auth.module';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AuthInterceptor } from './core/auth/interceptor/auth.interceptor';
 import { AuthInitializerService } from './core/auth/services/auth-initializer.service';
+import { PropertyPageComponent } from './features/components/property-page/property-page.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { AuthInitializerService } from './core/auth/services/auth-initializer.se
     FooterComponent,
     MenuComponent,
     DashboardComponent,
+    PropertyPageComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, AuthModule, HttpClientModule],
   providers: [

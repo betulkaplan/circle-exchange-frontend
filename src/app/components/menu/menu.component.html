@@ -1,5 +1,4 @@
 <ul>
-  <li>Menu Item 1</li>
-  <li>Menu Item 2</li>
-  <li>Menu Item 3</li>
+  <li (click)="navigateToPage('/')">Home</li>
+  <li *ngIf="authenticated" (click)="navigateToPage('property')">Property</li>
 </ul>

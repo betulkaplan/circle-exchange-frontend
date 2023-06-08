@@ -17,7 +17,7 @@ export class AuthInitializerService {
         this.authService.setLoggedInUser(user);
       })
       .catch((error: any) => {
-        console.error('Error fetching authenticated user:', error);
+        this.authService.logout();
       });
   }
 }
