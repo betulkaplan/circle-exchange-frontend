@@ -1,6 +1,6 @@
-<h2>Properties</h2>
-<ul>
-  <li *ngFor="let property of properties">
-    {{ property.title }} - Owner: {{ property.owner.username }}
-  </li>
-</ul>
+<div class="property-tiles p-5">
+  <div class="property-tile" *ngFor="let property of properties">
+    <h3>{{ property.title }}</h3>
+    <p>Owner: {{ property.owner.username }}</p>
+  </div>
+</div>

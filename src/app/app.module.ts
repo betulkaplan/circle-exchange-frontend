@@ -8,7 +8,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { MenuComponent } from './components/menu/menu.component';
 import { DashboardComponent } from './features/components/dashboard/dashboard.component';
 import { LoginComponent } from './core/auth/components/login/login.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthModule } from './core/auth/auth.module';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AuthInterceptor } from './core/auth/interceptor/auth.interceptor';
@@ -24,7 +24,13 @@ import { PropertyPageComponent } from './features/components/property-page/prope
     DashboardComponent,
     PropertyPageComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, AuthModule, HttpClientModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    AuthModule,
+    HttpClientModule,
+    FormsModule,
+  ],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
