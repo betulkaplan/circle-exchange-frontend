@@ -5,11 +5,13 @@ import { DashboardComponent } from './features/components/dashboard/dashboard.co
 import { PropertyPageComponent } from './features/components/property-page/property-page.component';
 import { AboutPageComponent } from './features/components/about-page/about-page.component';
 import { RegisterPageComponent } from './core/auth/components/register-page/register-page.component';
+import { PropertyDetailComponent } from './features/components/property-detail/property-detail.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterPageComponent },
   { path: 'property', component: PropertyPageComponent },
+  { path: 'property/:id', component: PropertyDetailComponent },
   { path: 'about', component: AboutPageComponent },
   {
     path: '',
