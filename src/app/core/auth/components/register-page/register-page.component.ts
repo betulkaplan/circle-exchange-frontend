@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register-page',
@@ -12,7 +13,8 @@ export class RegisterPageComponent {
 
   constructor(
     private formBuilder: FormBuilder,
-    private authService: AuthService
+    private authService: AuthService,
+    private router: Router
   ) {
     this.registerForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
@@ -29,7 +31,7 @@ export class RegisterPageComponent {
     this.authService.register(email, password).subscribe(
       (returnValue) => {
         console.log('Register successful', returnValue);
-        // this.router.navigate(['/']); // Redirect to the home page or any other desired page
+        this.router.navigate(['/']); // Redirect to the home page or any other desired page
       },
       (error) => {
         console.log('Register failed:', error);

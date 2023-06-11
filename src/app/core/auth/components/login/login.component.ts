@@ -34,15 +34,14 @@ export class LoginComponent {
     const { email, password } = this.loginForm.value;
 
     // Perform login logic using email and password
-    this.authService.login(email, password).subscribe(
-      (returnValue) => {
-        console.log('Login successful', returnValue);
-        // this.router.navigate(['/']); // Redirect to the home page or any other desired page
+    this.authService.login(email, password).subscribe({
+      next: () => {
+        this.router.navigate(['/']); // Redirect to the home page or any other desired page
       },
-      (error) => {
+      error: (error) => {
         console.log('Login failed:', error);
         // Display an error message to the user or perform any other error handling
-      }
-    );
+      },
+    });
   }
 }

@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, catchError, of, tap } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { AuthStorageService } from './auth-storage.service';
-import { Router } from '@angular/router';
+import { LoginResponse } from 'types.model';
 
 @Injectable({
   providedIn: 'root',
@@ -15,23 +15,24 @@ export class AuthService {
 
   constructor(
     private http: HttpClient,
-    private authStorage: AuthStorageService,
-    private router: Router
+    private authStorage: AuthStorageService
   ) {}
 
-  login(email: string, password: string): Observable<any> {
+  login(
+    email: string,
+    password: string
+  ): Observable<LoginResponse | HttpErrorResponse> {
     return this.http
-      .post<any>('http://localhost:8080/api/v1/auth/authenticate', {
+      .post<LoginResponse>('http://localhost:8080/api/v1/auth/authenticate', {
         email,
         password,
       })
       .pipe(
-        tap((response: any) => {
+        tap((response: LoginResponse) => {
           this.authStorage.setToken(response.token);
           this.loggedInUserSubject.next(response.user); // Update loggedInUser with the API response
-          this.router.navigate(['/']);
         }),
-        catchError((error: any) => {
+        catchError((error: HttpErrorResponse) => {
           return of(error);
         })
       );
@@ -46,7 +47,6 @@ export class AuthService {
         tap((response: any) => {
           this.authStorage.setToken(response.token);
           this.loggedInUserSubject.next(response.user); // Update loggedInUser with the API response
-          this.router.navigate(['/']);
         }),
         catchError((error: any) => {
           return of(error);
